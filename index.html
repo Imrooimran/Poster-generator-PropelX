@@ -601,7 +601,7 @@ async function drawPoster(canvas, fn, ln, jt, co, photoSrc) {
 
   // Job title (wraps up to 3 lines) + Company (wraps up to 2 lines)
   const dispJt = jt || 'Job Title', dispCo = co || 'Company Name';
-  const titleSize = 31, companySize = 35, companyGap = 12;
+  const titleSize = 31, companySize = titleSize, companyGap = 12;
   const jtFit = wrapAndFit(ctx, dispJt, 'Barlow', 400, 'normal', titleSize, 20, innerW, 3);
   const coFit = wrapAndFit(ctx, dispCo, 'Barlow', 400, 'normal', companySize, 20, innerW, 2);
   const titleLineH = Math.round(jtFit.size * 1.22);
@@ -610,7 +610,7 @@ async function drawPoster(canvas, fn, ln, jt, co, photoSrc) {
 
   // QR block
   const qrSize = 135, qrGap = 30;
-  ctx.font = `italic 400 24px 'Barlow'`;
+  ctx.font = `400 24px 'Barlow'`;
   const captionLines = ['Ready to Join?', 'Scan the QR Code'];
   const qrBlockH = qrSize;
 
@@ -641,7 +641,7 @@ async function drawPoster(canvas, fn, ln, jt, co, photoSrc) {
     ctx.restore();
   }
   ctx.save();
-  ctx.fillStyle = '#fff'; ctx.font = `italic 400 24px 'Barlow'`;
+  ctx.fillStyle = '#fff'; ctx.font = `400 24px 'Barlow'`;
   const capX = innerX + qrSize + qrGap;
   let capY = qrY + qrSize/2 - (captionLines.length-1)*14;
   captionLines.forEach(line => { ctx.fillText(line, capX, capY); capY += 29; });

@@ -9,7 +9,7 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Barlow', sans-serif;
-    background: #d8d8d8;
+    background: #EFF3F6;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -603,7 +603,7 @@ async function drawPoster(canvas, fn, ln, jt, co, photoSrc) {
   const dispJt = jt || 'Job Title', dispCo = co || 'Company Name';
   const titleSize = 31, companySize = 35, companyGap = 12;
   const jtFit = wrapAndFit(ctx, dispJt, 'Barlow', 400, 'normal', titleSize, 20, innerW, 3);
-  const coFit = wrapAndFit(ctx, dispCo, 'Barlow', 700, 'normal', companySize, 20, innerW, 2);
+  const coFit = wrapAndFit(ctx, dispCo, 'Barlow', 400, 'normal', companySize, 20, innerW, 2);
   const titleLineH = Math.round(jtFit.size * 1.22);
   const companyLineH = Math.round(coFit.size * 1.2);
   const titleBlockH = jtFit.lines.length * titleLineH + companyGap + coFit.lines.length * companyLineH;
@@ -622,8 +622,8 @@ async function drawPoster(canvas, fn, ln, jt, co, photoSrc) {
   ctx.fillStyle = '#fff'; ctx.font = `400 ${jtFit.size}px 'Barlow'`;
   jtFit.lines.forEach(line => { ctx.fillText(line, innerX, ty + jtFit.size); ty += titleLineH; });
   ty += companyGap;
-  // company — bold, wraps up to 2 lines
-  ctx.font = `700 ${coFit.size}px 'Barlow'`;
+  // company — same weight as job title/QR caption, wraps up to 2 lines
+  ctx.font = `400 ${coFit.size}px 'Barlow'`;
   coFit.lines.forEach(line => { ctx.fillText(line, innerX, ty + coFit.size); ty += companyLineH; });
   ctx.restore();
 
